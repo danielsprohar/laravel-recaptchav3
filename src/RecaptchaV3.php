@@ -67,6 +67,7 @@ class RecaptchaV3
      * Returns the score if the token is valid.
      *
      * @param $token
+     * @param $action https://developers.google.com/recaptcha/docs/v3#actions
      */
     public function verify($token, $action = null)
     {
