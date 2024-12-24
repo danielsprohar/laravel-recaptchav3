@@ -1,6 +1,5 @@
 # Laravel Recaptcha V3
 
-
 <p align="center">
 <a href="https://github.com/josiasmontag/laravel-recaptchav3/actions/workflows/run-tests.yml"><img src="https://github.com/josiasmontag/laravel-recaptchav3/actions/workflows/run-tests.yml/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/josiasmontag/laravel-recaptchav3"><img src="https://poser.pugx.org/josiasmontag/laravel-recaptchav3/d/total.svg" alt="Total Downloads"></a>
@@ -12,11 +11,27 @@ Laravel package for Google's [Recaptcha V3](https://developers.google.com/recapt
 
 ## Installation
 
+To get started, edit `composer.json` to download this repo:
 
-To get started, use Composer to add the package to your project's dependencies:
+    {
+        "repositories": [
+            {
+                "type": "vcs",
+                "url": "https://github.com/danielsprohar/laravel-recaptcha-v3"
+            }
+        ],
+        "require": {
+            "danielsprohar/laravel-recaptcha-v3": "dev-main"
+        }
+    }
 
-    composer require josiasmontag/laravel-recaptchav3
+Update your dependencies
 
+```
+composer update
+```
+
+## Environment Variables
 
 Add `RECAPTCHAV3_SITEKEY` and `RECAPTCHAV3_SECRET` to your `.env` file. (You can get them [here](https://www.google.com/recaptcha/admin#list))
 
@@ -26,6 +41,7 @@ RECAPTCHAV3_SECRET=secret
 ```
 
 Optionally, you can publish the config file:
+
 ```
 php artisan vendor:publish --provider="Lunaweb\RecaptchaV3\Providers\RecaptchaV3ServiceProvider"
 ```
@@ -42,8 +58,7 @@ Recaptcha v3 works best when it is loaded on every page to get the most context 
 
 #### Forms
 
-``RecaptchaV3::field($action, $name='g-recaptcha-response')`` creates an invisible input field that gets filled with a Recaptcha token on load.
-
+`RecaptchaV3::field($action, $name='g-recaptcha-response')` creates an invisible input field that gets filled with a Recaptcha token on load.
 
 ```html
 <form method="post" action="/register">
@@ -96,12 +111,17 @@ Add the following values to the `custom` array in the `validation` language file
 #### Hiding the ReCAPTCHA Badge
 
 Add to your CSS file:
+
 ```css
-.grecaptcha-badge { visibility: hidden !important; }
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
 ```
 
 #### Localization
-By default, the package follows the default application locale, which is defined in `config/app.php`. If you want to change this behavior, you can specify what locale to use by adding a new environment variable : 
+
+By default, the package follows the default application locale, which is defined in `config/app.php`. If you want to change this behavior, you can specify what locale to use by adding a new environment variable :
+
 ```
 RECAPTCHAV3_LOCALE=ar
 ```
